@@ -81,6 +81,7 @@ Desktop.ini
 ### Env ###
 .env
 .env.production
+src/main/resources/application.properties
 
 ### Misc ###
 *.java.hsp
