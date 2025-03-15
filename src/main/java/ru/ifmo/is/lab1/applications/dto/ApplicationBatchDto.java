@@ -13,9 +13,6 @@ public class ApplicationBatchDto implements BatchDto {
   @NotBlank
   private String name;
 
-  private Integer coordinatesId;
-  private Float monetization;
-
   @NotNull
   @NotBlank
   private String code;

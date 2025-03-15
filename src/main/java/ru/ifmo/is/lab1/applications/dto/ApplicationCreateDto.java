@@ -2,6 +2,7 @@ package ru.ifmo.is.lab1.applications.dto;
 
 import jakarta.validation.constraints.*;
 import lombok.Data;
+import ru.ifmo.is.lab1.adminrequests.Status;
 
 @Data
 public class ApplicationCreateDto {
@@ -15,6 +16,8 @@ public class ApplicationCreateDto {
   @NotNull
   @NotBlank
   private String code;
+
+  private Status status;
 
   @Min(0)
   private Integer cost;
