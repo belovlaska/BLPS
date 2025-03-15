@@ -28,13 +28,13 @@ public class SpecialOperationService {
 //    dto.setDisciplineId(id);
 //    return labWorkService.create(dto);
 //  }
-
-  @PreAuthorize("hasRole('')")
-  public ApplicationDto addMonetizationToApplication(int id, ApplicationUpdateDto dto) {
-    Random rand = new Random();
-    float monetization = rand.nextFloat(1,1000);
-    dto.setMonetization(monetization);
-    return applicationService.update(dto);
-  }
+//
+//  @PreAuthorize("hasRole('')")
+//  public ApplicationDto addMonetizationToApplication(int id, ApplicationDto dto) {
+//    Random rand = new Random();
+//    float monetization = rand.nextFloat(1,1000);
+//    dto.setMonetization(monetization);
+//    return applicationService.create(dto);
+//  }
 
 }

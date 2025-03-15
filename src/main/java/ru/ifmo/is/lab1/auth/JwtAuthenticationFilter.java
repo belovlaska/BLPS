@@ -46,12 +46,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     // Обрезаем префикс и получаем имя пользователя из токена
     var jwt = authHeader.substring(BEARER_PREFIX.length());
     var username = jwtService.extractUsername(jwt);
+    var details = jwtService.extractDetails(jwt);
     var userId = jwtService.extractId(jwt); // Извлекаем ID пользователя
     var role = jwtService.extractRole(jwt); // Извлекаем роль
 
     if (StringUtils.isNotEmpty(username) && SecurityContextHolder.getContext().getAuthentication() == null) {
       // Создаем объект UserDetails без запроса к БД
-      UserDetails userDetails = new User(userId, username, Role.valueOf(role), null,  null);
+      UserDetails userDetails = new User(userId, username, details, Role.valueOf(role), null,  null);
 
       // Если токен валиден, то аутентифицируем пользователя
       if (jwtService.isTokenValid(jwt, userDetails)) {

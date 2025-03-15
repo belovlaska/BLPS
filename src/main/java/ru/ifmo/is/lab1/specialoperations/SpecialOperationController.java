@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.ifmo.is.lab1.applications.ApplicationService;
 import ru.ifmo.is.lab1.applications.dto.ApplicationCreateDto;
@@ -76,10 +77,11 @@ public class SpecialOperationController {
 
 
 
-  @PostMapping("/add-monetization-to-application/{sum}")
-  @Operation(summary = "Добавить монетизацию приложению")
-  public ResponseEntity<ApplicationDto> addMonetizationToApplication(@PathVariable int id, @Valid @RequestBody ApplicationCreateDto dto) {
-    var application = service.addMonetizationToApplication(id, dto);
-    return ResponseEntity.ok(application);
-  }
+//  @PostMapping("/add-monetization-to-application/{id}")
+//  @PreAuthorize("hasRole('FINANCIER')")
+//  @Operation(summary = "Добавить монетизацию приложению")
+//  public ResponseEntity<ApplicationDto> addMonetizationToApplication(@PathVariable int id, @Valid @RequestBody ApplicationDto dto) {
+//    var application = service.addMonetizationToApplication(id, dto);
+//    return ResponseEntity.ok(application);
+//  }
 }
