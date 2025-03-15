@@ -12,6 +12,9 @@ public class ApplicationCreateDto {
   @NotBlank
   private String description;
 
+  @NotNull
+  @NotBlank
+  private String code;
 
   @Min(0)
   private Integer cost;

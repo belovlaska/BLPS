@@ -13,6 +13,12 @@ public class ApplicationUpdateDto {
   @NotBlank
   private JsonNullable<String> description;
 
+  private JsonNullable<Float> monetization;
+
+  @NotNull
+  @NotBlank
+  private JsonNullable<String> code;
+
   @Min(0)
   private JsonNullable<Integer> cost;
 

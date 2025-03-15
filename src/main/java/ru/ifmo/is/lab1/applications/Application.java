@@ -6,10 +6,11 @@ import jakarta.validation.constraints.*;
 import org.hibernate.annotations.ColumnTransformer;
 import org.hibernate.annotations.JdbcType;
 import org.hibernate.dialect.PostgreSQLEnumJdbcType;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import ru.ifmo.is.lab1.common.framework.CrudEntity;
 
-import ru.ifmo.is.lab1.monetization.Monetization;
+
 import ru.ifmo.is.lab1.users.User;
 
 @Entity
@@ -23,8 +24,8 @@ import ru.ifmo.is.lab1.users.User;
 public class Application extends CrudEntity {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "labworks_id_seq")
-  @SequenceGenerator(name = "labworks_id_seq", sequenceName = "labworks_id_seq", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "applications_id_seq")
+  @SequenceGenerator(name = "applications_id_seq", sequenceName = "applications_id_seq", allocationSize = 1)
   private int id;
 
   @NotNull
@@ -33,9 +34,8 @@ public class Application extends CrudEntity {
   private String name;
 
   @NotNull
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "monetization_id", nullable = false)
-  private Monetization monetization;
+  @Column(name = "monetization")
+  private float monetization = 0;
 
   @NotBlank
   private String description;
@@ -45,9 +45,10 @@ public class Application extends CrudEntity {
   private User author;
 
   @NotNull
-  @Enumerated(EnumType.STRING)
   @Column(name = "cost")
   private Integer cost;
 
-
+  @NotNull
+  @Column(name = "code")
+  private String code;
 }
