@@ -1,6 +1,7 @@
 package ru.ifmo.is.lab1.users;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -35,6 +36,7 @@ public class User implements UserDetails, BaseEntity {
   @Column(name="username", nullable=false, unique=true)
   private String username;
 
+  @NotNull
   @Column(name="details", nullable = false, unique = true, length = 10)
   private int details;
 
