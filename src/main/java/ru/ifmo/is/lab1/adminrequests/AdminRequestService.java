@@ -34,7 +34,7 @@ public class AdminRequestService {
   private final ApplicationPolicy policy;
   private final UserRepository userRepository;
   private final UserService userService;
-  private final EventService<AdminRequest> eventService;
+  private final EventService<Application> eventService;
 
   public Page<ApplicationDto> getAll(Pageable pageable) {
     var user = currentUser();
@@ -54,60 +54,52 @@ public class AdminRequestService {
     return applicationsRequests.map(mapper::map);
   }
 
-  public AdminRequestDto getById(int id) {
-    var adminRequest = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Not Found: " + id));
-    policy.show(currentUser(), adminRequest);
+  public ApplicationDto getById(int id) {
+    var applicationRequest = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Not Found: " + id));
+    policy.show(currentUser(), applicationRequest);
 
-    return mapper.map(adminRequest);
+    return mapper.map(applicationRequest);
   }
 
   @Transactional
-  public AdminRequestDto create() {
+  public ApplicationDto create() {
     var user = currentUser();
     policy.create(user);
 
-    var previousRequests = repository.findByStatusAndUserOrderByCreatedAtDesc(Status.PENDING, user);
+    var previousRequests = repository.findByStatusAndAuthorOrderByCreatedAtDesc(Status.PENDING, user);
     if (previousRequests.isPresent()) {
       throw new SomePendingRequestsExists("У вас уже есть необработанная заявка.");
     }
 
-    var adminRequest = AdminRequest.builder()
-      .user(user)
+    var applicationRequest = Application.builder()
+      .author(user)
       .status(Status.PENDING)
-      .createdAt(ZonedDateTime.now())
       .build();
 
-    repository.save(adminRequest);
-    eventService.notify(EventType.CREATE, adminRequest);
-    return mapper.map(adminRequest);
+    repository.save(applicationRequest);
+    eventService.notify(EventType.CREATE, applicationRequest);
+    return mapper.map(applicationRequest);
   }
 
   @Transactional
-  public AdminRequestDto process(int id, boolean approved) {
+  public ApplicationDto process(int id, boolean approved) {
     var currentUser = currentUser();
-    var adminRequest = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Not Found: " + id));
-    policy.update(currentUser, adminRequest);
+    var applicationRequest = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Not Found: " + id));
+    policy.update(currentUser, applicationRequest);
 
-    if (!adminRequest.getStatus().equals(Status.PENDING)) {
-      throw new AdminRequestAlreadyProcessed("Запрос на администрирование уже был обработан.");
+    if (!applicationRequest.getStatus().equals(Status.PENDING)) {
+      throw new AdminRequestAlreadyProcessed("Запрос на публикацию уже был обработан.");
     }
-
-    adminRequest.setApprovalDate(ZonedDateTime.now());
-    adminRequest.setApprovedBy(currentUser);
 
     if (approved) {
-      adminRequest.setStatus(Status.APPROVED);
-
-      var user = adminRequest.getUser();
-      user.setRole(Role.ROLE_ADMIN);
-      userRepository.save(user);
+      applicationRequest.setStatus(Status.APPROVED);
     } else {
-      adminRequest.setStatus(Status.REJECTED);
+      applicationRequest.setStatus(Status.REJECTED);
     }
 
-    repository.save(adminRequest);
-    eventService.notify(EventType.UPDATE, adminRequest);
-    return mapper.map(adminRequest);
+    repository.save(applicationRequest);
+    eventService.notify(EventType.UPDATE, applicationRequest);
+    return mapper.map(applicationRequest);
   }
 
   @RequestCache
