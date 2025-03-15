@@ -43,8 +43,8 @@ public class BatchOperationController {
 
   @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
   @ResponseStatus(HttpStatus.CREATED)
-  @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
-  @Operation(summary = "Импортировать объекты", security = @SecurityRequirement(name = "bearerAuth"))
+  @PreAuthorize("hasRole('USER')")
+  @Operation(summary = "Загрузить приложение", security = @SecurityRequirement(name = "bearerAuth"))
   public ResponseEntity<BatchOperationDto> create(@RequestParam("file") MultipartFile file) throws IOException {
     if (file.isEmpty()) {
       throw new FileIsEmptyError("File not found");

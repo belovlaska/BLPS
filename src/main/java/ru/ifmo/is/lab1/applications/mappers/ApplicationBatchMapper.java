@@ -17,7 +17,7 @@ import ru.ifmo.is.lab1.applications.dto.ApplicationCreateDto;
   componentModel = MappingConstants.ComponentModel.SPRING,
   unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
-public abstract class LabWorkBatchMapper implements BatchMapper<ApplicationBatchDto, ApplicationCreateDto, ApplicationUpdateDto> {
+public abstract class ApplicationBatchMapper implements BatchMapper<ApplicationBatchDto, ApplicationCreateDto, ApplicationUpdateDto> {
   public abstract ApplicationCreateDto toCreate(ApplicationBatchDto dto);
 
   public abstract ApplicationUpdateDto toUpdate(ApplicationBatchDto model);

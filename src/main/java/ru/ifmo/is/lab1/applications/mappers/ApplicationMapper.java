@@ -15,8 +15,7 @@ import ru.ifmo.is.lab1.applications.dto.ApplicationUpdateDto;
   componentModel = MappingConstants.ComponentModel.SPRING,
   unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
-public abstract class LabWorkMapper implements CrudMapper<Application, ApplicationDto, ApplicationCreateDto, ApplicationUpdateDto> {
-  @Mapping(source = "monetizationId", target = "monetization")
+public abstract class ApplicationMapper implements CrudMapper<Application, ApplicationDto, ApplicationCreateDto, ApplicationUpdateDto> {
   public abstract Application map(ApplicationCreateDto dto);
 
   public abstract ApplicationDto map(Application model);

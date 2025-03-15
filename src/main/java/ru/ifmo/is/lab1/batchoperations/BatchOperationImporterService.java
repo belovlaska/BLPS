@@ -9,10 +9,7 @@ import ru.ifmo.is.lab1.common.errors.ImportError;
 import ru.ifmo.is.lab1.common.errors.PolicyViolationError;
 import ru.ifmo.is.lab1.common.errors.ResourceAlreadyExists;
 
-import ru.ifmo.is.lab1.disciplines.DisciplineImportService;
 import ru.ifmo.is.lab1.applications.ApplicationImportService;
-import ru.ifmo.is.lab1.locations.LocationImportService;
-import ru.ifmo.is.lab1.people.PersonImportService;
 
 import java.util.List;
 
@@ -22,11 +19,8 @@ public class BatchOperationImporterService {
 
   private final BatchOperationRepository repository;
 
-  private final CoordinateImportService coordinateImportService;
-  private final DisciplineImportService disciplineImportService;
-  private final ApplicationImportService labWorkImportService;
-  private final LocationImportService locationImportService;
-  private final PersonImportService personImportService;
+  //private final MonetizationImportService monetizationImportService;
+  private final ApplicationImportService applicationImportService;
 
   @Transactional(isolation = Isolation.SERIALIZABLE)
   public BatchOperation doImport(BatchOperation batchOperation, List<BatchOperationUnitDto> operations)
@@ -34,11 +28,8 @@ public class BatchOperationImporterService {
 
     for (var operation : operations) {
       switch (operation.getResourceType()) {
-        case COORDINATES  -> coordinateImportService.handle(batchOperation, operation);
-        case DISCIPLINES -> disciplineImportService.handle(batchOperation, operation);
-        case LABWORKS      -> labWorkImportService.handle(batchOperation, operation);
-        case LOCATIONS    -> locationImportService.handle(batchOperation, operation);
-        case PEOPLE       -> personImportService.handle(batchOperation, operation);
+        //case MONETIZATIONS  -> monetizationImportService.handle(batchOperation, operation);
+        case APPLICATIONS      -> applicationImportService.handle(batchOperation, operation);
         default -> throw new ImportError("Unhandled resource type: " + operation.getResourceType());
       }
     }

@@ -4,12 +4,12 @@ import org.springframework.stereotype.Service;
 import ru.ifmo.is.lab1.applications.dto.ApplicationCreateDto;
 import ru.ifmo.is.lab1.applications.dto.ApplicationDto;
 import ru.ifmo.is.lab1.applications.dto.ApplicationUpdateDto;
+import ru.ifmo.is.lab1.applications.mappers.ApplicationMapper;
 import ru.ifmo.is.lab1.common.context.ApplicationLockBean;
 import ru.ifmo.is.lab1.common.errors.ResourceAlreadyExists;
 import ru.ifmo.is.lab1.common.framework.CrudService;
 import ru.ifmo.is.lab1.common.search.SearchMapper;
 import ru.ifmo.is.lab1.events.EventService;
-import ru.ifmo.is.lab1.applications.mappers.LabWorkMapper;
 import ru.ifmo.is.lab1.users.UserService;
 
 @Service
@@ -17,7 +17,7 @@ public class ApplicationService
   extends CrudService<
   Application,
   ApplicationRepository,
-        LabWorkMapper,
+  ApplicationMapper,
         ApplicationPolicy,
   ApplicationDto,
   ApplicationCreateDto,
@@ -27,7 +27,7 @@ public class ApplicationService
   private final ApplicationLockBean applicationLock;
   public ApplicationService(
     ApplicationRepository repository,
-    LabWorkMapper mapper,
+    ApplicationMapper mapper,
     ApplicationPolicy policy,
     SearchMapper<Application> searchMapper,
     UserService userService,
