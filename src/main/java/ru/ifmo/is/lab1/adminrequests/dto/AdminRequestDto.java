@@ -1,7 +1,7 @@
 package ru.ifmo.is.lab1.adminrequests.dto;
 
 import lombok.Data;
-import ru.ifmo.is.lab1.adminrequests.Status;
+import ru.ifmo.is.lab1.applications.Status;
 import ru.ifmo.is.lab1.users.User;
 import java.time.ZonedDateTime;
 

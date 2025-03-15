@@ -3,8 +3,6 @@ package ru.ifmo.is.lab1.applications;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
-import ru.ifmo.is.lab1.adminrequests.AdminRequest;
-import ru.ifmo.is.lab1.adminrequests.Status;
 import ru.ifmo.is.lab1.common.framework.CrudRepository;
 import ru.ifmo.is.lab1.users.User;
 

@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.JdbcType;
 import org.hibernate.dialect.PostgreSQLEnumJdbcType;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import ru.ifmo.is.lab1.applications.Status;
 import ru.ifmo.is.lab1.common.entity.BaseEntity;
 import ru.ifmo.is.lab1.common.utils.datetime.ZonedDateTimeConverter;
 import ru.ifmo.is.lab1.users.User;

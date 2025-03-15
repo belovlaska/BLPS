@@ -7,7 +7,6 @@ import org.hibernate.annotations.ColumnTransformer;
 import org.hibernate.annotations.JdbcType;
 import org.hibernate.dialect.PostgreSQLEnumJdbcType;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import ru.ifmo.is.lab1.adminrequests.Status;
 import ru.ifmo.is.lab1.common.framework.CrudEntity;
 
 import ru.ifmo.is.lab1.users.User;

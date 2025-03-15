@@ -1,4 +1,4 @@
-package ru.ifmo.is.lab1.adminrequests;
+package ru.ifmo.is.lab1.applications;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -6,10 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ru.ifmo.is.lab1.adminrequests.dto.AdminRequestDto;
-import ru.ifmo.is.lab1.applications.Application;
-import ru.ifmo.is.lab1.applications.ApplicationPolicy;
-import ru.ifmo.is.lab1.applications.ApplicationRepository;
 import ru.ifmo.is.lab1.applications.dto.ApplicationDto;
 import ru.ifmo.is.lab1.applications.mappers.ApplicationMapper;
 import ru.ifmo.is.lab1.common.caching.RequestCache;
@@ -18,21 +14,16 @@ import ru.ifmo.is.lab1.common.errors.ResourceNotFoundException;
 import ru.ifmo.is.lab1.common.errors.SomePendingRequestsExists;
 import ru.ifmo.is.lab1.events.EventService;
 import ru.ifmo.is.lab1.events.EventType;
-import ru.ifmo.is.lab1.users.Role;
 import ru.ifmo.is.lab1.users.User;
-import ru.ifmo.is.lab1.users.UserRepository;
 import ru.ifmo.is.lab1.users.UserService;
-
-import java.time.ZonedDateTime;
 
 @Service
 @RequiredArgsConstructor
-public class AdminRequestService {
+public class ApplicationRequestService {
 
   private final ApplicationRepository repository;
   private final ApplicationMapper mapper;
   private final ApplicationPolicy policy;
-  private final UserRepository userRepository;
   private final UserService userService;
   private final EventService<Application> eventService;
 

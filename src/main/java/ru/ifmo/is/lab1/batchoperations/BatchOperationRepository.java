@@ -4,7 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import ru.ifmo.is.lab1.adminrequests.Status;
+import ru.ifmo.is.lab1.applications.Status;
 import ru.ifmo.is.lab1.users.User;
 
 import java.util.Optional;
