@@ -7,7 +7,7 @@ CREATE TYPE country AS ENUM ('USA', 'GERMANY', 'FRANCE', 'THAILAND', 'NORTH_KORE
 CREATE TYPE color AS ENUM ('GREEN', 'RED', 'BLACK', 'YELLOW', 'BROWN');
 
 -- Вспомогательный тип для ролей пользователей (enum Role)
-CREATE TYPE user_role AS ENUM ('ROLE_USER', 'ROLE_ADMIN');
+CREATE TYPE user_role AS ENUM ('ROLE_USER', 'ROLE_ADMIN', 'ROLE_FINANCIER');
 
 -- Вспомогательный тип для сложности лабораторных работ (enum Difficulty)
 CREATE TYPE difficulty AS ENUM ('VERY_EASY', 'EASY', 'HARD', 'HOPELESS', 'TERRIBLE');

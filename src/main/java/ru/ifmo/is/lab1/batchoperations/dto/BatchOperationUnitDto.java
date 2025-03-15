@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.*;
 import jakarta.validation.constraints.NotNull;
 import ru.ifmo.is.lab1.applications.dto.ApplicationBatchDto;
 import ru.ifmo.is.lab1.common.framework.dto.BatchDto;
-import ru.ifmo.is.lab1.monetization.dto.MonetizationBatchDto;
 import ru.ifmo.is.lab1.events.ResourceType;
 
 
