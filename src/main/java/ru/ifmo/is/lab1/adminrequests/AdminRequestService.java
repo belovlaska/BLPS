@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ru.ifmo.is.lab1.adminrequests.dto.AdminRequestDto;
+import ru.ifmo.is.lab1.applications.Application;
+import ru.ifmo.is.lab1.applications.ApplicationPolicy;
+import ru.ifmo.is.lab1.applications.ApplicationRepository;
+import ru.ifmo.is.lab1.applications.dto.ApplicationDto;
+import ru.ifmo.is.lab1.applications.mappers.ApplicationMapper;
 import ru.ifmo.is.lab1.common.caching.RequestCache;
 import ru.ifmo.is.lab1.common.errors.AdminRequestAlreadyProcessed;
 import ru.ifmo.is.lab1.common.errors.ResourceNotFoundException;
@@ -24,14 +29,14 @@ import java.time.ZonedDateTime;
 @RequiredArgsConstructor
 public class AdminRequestService {
 
-  private final AdminRequestRepository repository;
-  private final AdminRequestMapper mapper;
-  private final AdminRequestPolicy policy;
+  private final ApplicationRepository repository;
+  private final ApplicationMapper mapper;
+  private final ApplicationPolicy policy;
   private final UserRepository userRepository;
   private final UserService userService;
   private final EventService<AdminRequest> eventService;
 
-  public Page<AdminRequestDto> getAll(Pageable pageable) {
+  public Page<ApplicationDto> getAll(Pageable pageable) {
     var user = currentUser();
     policy.showAll(user);
 
@@ -39,14 +44,14 @@ public class AdminRequestService {
       return repository.findAllByOrderByCreatedAtDesc(pageable).map(mapper::map);
     }
 
-    return repository.findAllByUserOrderByCreatedAtDesc(user, pageable).map(mapper::map);
+    return repository.findAllByAuthorOrderByCreatedAtDesc(user, pageable).map(mapper::map);
   }
 
-  public Page<AdminRequestDto> getAllPending(Pageable pageable) {
+  public Page<ApplicationDto> getAllPending(Pageable pageable) {
     policy.showAll(currentUser());
 
-    var adminRequests = repository.findAllByStatusOrderByCreatedAtDesc(Status.PENDING, pageable);
-    return adminRequests.map(mapper::map);
+    var applicationsRequests = repository.findAllByStatusOrderByCreatedAtDesc(Status.PENDING, pageable);
+    return applicationsRequests.map(mapper::map);
   }
 
   public AdminRequestDto getById(int id) {
