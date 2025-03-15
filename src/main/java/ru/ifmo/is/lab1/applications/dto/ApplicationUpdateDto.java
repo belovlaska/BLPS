@@ -10,9 +10,6 @@ public class ApplicationUpdateDto {
   @NotBlank
   private JsonNullable<String> name;
 
-  @NotNull
-  private JsonNullable<Integer> monetizationId;
-
   @NotBlank
   private JsonNullable<String> description;
 

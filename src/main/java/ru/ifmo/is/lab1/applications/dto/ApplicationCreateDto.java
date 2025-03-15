@@ -9,9 +9,6 @@ public class ApplicationCreateDto {
   @NotBlank
   private String name;
 
-  @NotNull
-  private Integer monetizationId;
-
   @NotBlank
   private String description;
 
