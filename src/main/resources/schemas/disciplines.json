@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/Discipline",
+
+  "definitions": {
+    "Discipline": {
+      "title": "Discipline",
+      "description": "Discipline DTO",
+
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "labsCount": {
+          "type": "integer"
+        }
+      },
+      "required": ["name", "labsCount"]
+    }
+  }
+}

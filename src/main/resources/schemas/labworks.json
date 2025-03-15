@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/Labwork",
+
+  "definitions": {
+    "Labwork": {
+      "title": "Labwork",
+      "description": "Labwork DTO",
+
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": ["VERY_EASY","EASY", "HARD", "HOPELESS", "TERRIBLE"]
+        },
+        "description": {
+          "type": "string"
+        },
+        "minimalPoint": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+
+        "coordinates": {
+          "$ref": "classpath:///schemas/coordinates.json#/definitions/Coordinate"
+        },
+        "coordinatesId": {
+          "type": "integer",
+          "minimum": 1
+        },
+
+        "author": {
+          "$ref": "classpath:///schemas/people.json#/definitions/Person"
+        },
+        "authorId": {
+          "type": "integer",
+          "minimum": 1
+        },
+
+        "discipline": {
+          "$ref": "classpath:///schemas/disciplines.json#/definitions/Discipline"
+        },
+        "disciplineId": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "dependencies": {
+        "author": {
+          "not": { "required": ["authorId"] }
+        },
+        "authorId": {
+          "not": { "required": ["author"] }
+        },
+        "coordinates": {
+          "not": { "required": ["coordinatesId"] }
+        },
+        "coordinatesId": {
+          "not": { "required": ["coordinates"] }
+        },
+        "discipline": {
+          "not": { "required": ["disciplineId"] }
+        },
+        "disciplineId": {
+          "not": { "required": ["discipline"] }
+        }
+      },
+      "required": ["name"],
+      "oneOf": [
+        { "required": ["coordinates"] },
+        { "required": ["coordinatesId"] }
+      ],
+      "not": {
+        "allOf": [
+          { "required": ["author", "authorId"] },
+          { "required": ["discipline", "disciplineId"] }
+        ]
+      }
+    }
+  }
+}

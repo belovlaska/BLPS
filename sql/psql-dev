@@ -1,0 +1,1 @@
+PGPASSWORD=s367306 psql -h localhost -p 5432 -U s367306 -d islab1
