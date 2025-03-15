@@ -8,9 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.ifmo.is.lab1.applications.ApplicationService;
-import ru.ifmo.is.lab1.monetization.MonetizationService;
-import ru.ifmo.is.lab1.monetization.dto.MonetizationCreateDto;
-import ru.ifmo.is.lab1.monetization.dto.MonetizationDto;
+import ru.ifmo.is.lab1.applications.dto.ApplicationCreateDto;
+import ru.ifmo.is.lab1.applications.dto.ApplicationDto;
 
 
 @RestController
@@ -20,8 +19,7 @@ import ru.ifmo.is.lab1.monetization.dto.MonetizationDto;
 public class SpecialOperationController {
 
   private final SpecialOperationService service;
-  private final ApplicationService labWorkService;
-  private final MonetizationService monetizationService;
+  private final ApplicationService applicationService;
 
 //  @GetMapping("/filter-by-minimalPoint")
 //  @Operation(summary = "Вернуть массив объектов, значение поля `minimalpoint` которых меньше заданного.")
