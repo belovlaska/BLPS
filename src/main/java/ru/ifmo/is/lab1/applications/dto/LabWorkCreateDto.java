@@ -2,7 +2,6 @@ package ru.ifmo.is.lab1.applications.dto;
 
 import jakarta.validation.constraints.*;
 import lombok.Data;
-import ru.ifmo.is.lab1.applications.Cost;
 
 @Data
 public class LabWorkCreateDto {

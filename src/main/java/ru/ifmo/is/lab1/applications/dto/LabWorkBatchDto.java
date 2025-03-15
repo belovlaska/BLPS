@@ -6,9 +6,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import ru.ifmo.is.lab1.common.framework.dto.BatchDto;
 import ru.ifmo.is.lab1.disciplines.dto.DisciplineBatchDto;
-import ru.ifmo.is.lab1.applications.Cost;
 import ru.ifmo.is.lab1.people.dto.PersonBatchDto;
-import ru.ifmo.is.lab1.coordinates.dto.CoordinateBatchDto;
+import ru.ifmo.is.lab1.monetization.dto.MonetizationBatchDto;
 import ru.ifmo.is.lab1.events.ResourceType;
 
 @Data
@@ -18,7 +17,7 @@ public class LabWorkBatchDto implements BatchDto {
   private String name;
 
   private Integer coordinatesId;
-  private CoordinateBatchDto coordinates;
+  private MonetizationBatchDto coordinates;
 
 
   private Integer authorId;

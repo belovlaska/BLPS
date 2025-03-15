@@ -4,7 +4,7 @@ import lombok.*;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.validation.constraints.NotNull;
 import ru.ifmo.is.lab1.common.framework.dto.BatchDto;
-import ru.ifmo.is.lab1.coordinates.dto.CoordinateBatchDto;
+import ru.ifmo.is.lab1.monetization.dto.MonetizationBatchDto;
 import ru.ifmo.is.lab1.disciplines.dto.DisciplineBatchDto;
 import ru.ifmo.is.lab1.applications.dto.LabWorkBatchDto;
 import ru.ifmo.is.lab1.events.ResourceType;
@@ -25,7 +25,7 @@ public class BatchOperationUnitDto {
 
   @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "resourceType", include = JsonTypeInfo.As.EXTERNAL_PROPERTY)
   @JsonSubTypes(value = {
-    @JsonSubTypes.Type(value = CoordinateBatchDto.class, name = "coordinates"),
+    @JsonSubTypes.Type(value = MonetizationBatchDto.class, name = "monetization"),
     @JsonSubTypes.Type(value = DisciplineBatchDto.class, name = "disciplines"),
     @JsonSubTypes.Type(value = LabWorkBatchDto.class, name = "applications"),
     @JsonSubTypes.Type(value = LocationBatchDto.class, name = "locations"),

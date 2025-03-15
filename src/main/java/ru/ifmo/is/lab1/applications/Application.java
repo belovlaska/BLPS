@@ -45,10 +45,8 @@ public class Application extends CrudEntity {
 
   @NotNull
   @Enumerated(EnumType.STRING)
-  @JdbcType(PostgreSQLEnumJdbcType.class)
-  @ColumnTransformer(write="?::cost")
   @Column(name = "cost")
-  private Cost cost;
+  private Integer cost;
 
 
 }

@@ -5,7 +5,7 @@ CREATE TYPE event_type AS ENUM ('CREATE', 'UPDATE', 'DELETE');
 
 -- Вспомогательный тип для типов сущностей
 CREATE TYPE resource_type AS ENUM (
-  'applications', 'coordinates', 'disciplines', 'people', 'locations', 'admin-requests'
+  'applications', 'monetization', 'disciplines', 'people', 'locations', 'admin-requests'
 );
 
 -- Таблица событий

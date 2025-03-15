@@ -36,7 +36,7 @@ public class SecurityConfiguration {
 
   private static final List<String> crudResources = Arrays.asList(
     "applications",
-    "coordinates",
+    "monetization",
     "disciplines",
     "people",
     "locations"

@@ -9,8 +9,8 @@ public enum ResourceType {
   ADMIN_REQUESTS("admin-requests"),
   @JsonProperty("batch-operations")
   BATCH_OPERATIONS("batch-operations"),
-  @JsonProperty("coordinates")
-  COORDINATES("coordinates"),
+  @JsonProperty("monetization")
+  COORDINATES("monetization"),
   @JsonProperty("applications")
   LABWORKS("applications"),
   @JsonProperty("disciplines")

@@ -16,7 +16,7 @@ import ru.ifmo.is.lab1.applications.dto.LabWorkUpdateDto;
   unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
 public abstract class LabWorkMapper implements CrudMapper<Application, LabWorkDto, LabWorkCreateDto, LabWorkUpdateDto> {
-  @Mapping(source = "coordinatesId", target = "coordinates")
+  @Mapping(source = "coordinatesId", target = "monetization")
   @Mapping(source = "disciplineId", target = "discipline")
   @Mapping(source = "authorId", target = "author")
   public abstract Application map(LabWorkCreateDto dto);

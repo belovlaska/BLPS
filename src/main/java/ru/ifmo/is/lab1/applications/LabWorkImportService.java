@@ -8,7 +8,6 @@ import ru.ifmo.is.lab1.batchoperations.BatchOperation;
 import ru.ifmo.is.lab1.batchoperations.contract.ImportService;
 import ru.ifmo.is.lab1.batchoperations.dto.BatchOperationUnitDto;
 import ru.ifmo.is.lab1.batchoperations.dto.OperationType;
-import ru.ifmo.is.lab1.coordinates.CoordinateImportService;
 import ru.ifmo.is.lab1.disciplines.DisciplineImportService;
 import ru.ifmo.is.lab1.applications.dto.LabWorkBatchDto;
 import ru.ifmo.is.lab1.applications.mappers.LabWorkBatchMapper;

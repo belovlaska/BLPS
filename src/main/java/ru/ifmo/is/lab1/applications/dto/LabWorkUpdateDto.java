@@ -3,7 +3,6 @@ package ru.ifmo.is.lab1.applications.dto;
 import lombok.Data;
 import jakarta.validation.constraints.*;
 import org.openapitools.jackson.nullable.JsonNullable;
-import ru.ifmo.is.lab1.applications.Cost;
 
 @Data
 public class LabWorkUpdateDto {

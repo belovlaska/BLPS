@@ -9,7 +9,6 @@ import ru.ifmo.is.lab1.common.errors.ImportError;
 import ru.ifmo.is.lab1.common.errors.PolicyViolationError;
 import ru.ifmo.is.lab1.common.errors.ResourceAlreadyExists;
 
-import ru.ifmo.is.lab1.coordinates.CoordinateImportService;
 import ru.ifmo.is.lab1.disciplines.DisciplineImportService;
 import ru.ifmo.is.lab1.applications.LabWorkImportService;
 import ru.ifmo.is.lab1.locations.LocationImportService;

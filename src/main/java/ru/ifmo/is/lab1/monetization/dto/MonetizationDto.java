@@ -1,4 +1,4 @@
-package ru.ifmo.is.lab1.coordinates.dto;
+package ru.ifmo.is.lab1.monetization.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -6,8 +6,7 @@ import ru.ifmo.is.lab1.common.framework.dto.AuditableDto;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class CoordinateDto extends AuditableDto {
+public class MonetizationDto extends AuditableDto {
   private int id;
-  private float x;
-  private Float y;
+  private float sum;
 }
