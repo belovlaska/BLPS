@@ -13,14 +13,15 @@ import ru.ifmo.is.lab1.disciplines.DisciplineImportService;
 import ru.ifmo.is.lab1.applications.mappers.LabWorkBatchMapper;
 import ru.ifmo.is.lab1.applications.mappers.LabWorkMapper;
 import ru.ifmo.is.lab1.events.ResourceType;
+import ru.ifmo.is.lab1.monetization.MonetizationImportService;
 import ru.ifmo.is.lab1.people.PersonImportService;
 
 @Service
 @RequiredArgsConstructor
 public class ApplicationImportService implements ImportService<Application> {
 
-  private final CoordinateImportService coordinateImportService;
 
+  private final MonetizationImportService monetizationImportService;
   private final LabWorkBatchMapper batchMapper;
   private final LabWorkMapper mapper;
   private final ApplicationService service;
@@ -31,31 +32,6 @@ public class ApplicationImportService implements ImportService<Application> {
         batchOperation.incAddedCount();
         var body = (ApplicationBatchDto) dto.getBody();
 
-        // Coordinates
-        if (body.getCoordinates() != null) {
-          var coordinatesId = coordinateImportService.handle(batchOperation, new BatchOperationUnitDto(
-            OperationType.CREATE, ResourceType.COORDINATES, null, body.getCoordinates()
-          )).getRight().getId();
-          body.setCoordinatesId(coordinatesId);
-        }
-
-
-
-        // Author
-        if (body.getAuthor() != null) {
-          var authorId = personImportService.handle(batchOperation, new BatchOperationUnitDto(
-            OperationType.CREATE, ResourceType.PEOPLE, null, body.getAuthor()
-          )).getRight().getId();
-          body.setAuthorId(authorId);
-        }
-
-        // Discipline
-        if (body.getDiscipline() != null) {
-          var disciplineId = disciplineImportService.handle(batchOperation, new BatchOperationUnitDto(
-            OperationType.CREATE, ResourceType.DISCIPLINES, null, body.getDiscipline()
-          )).getRight().getId();
-          body.setDisciplineId(disciplineId);
-        }
 
         var createDto = batchMapper.toCreate(body);
         var objDto = service.create(createDto);
@@ -65,29 +41,13 @@ public class ApplicationImportService implements ImportService<Application> {
         batchOperation.incUpdatedCount();
         var body = (ApplicationBatchDto) dto.getBody();
 
-        // Coordinates
-        if (body.getCoordinates() != null) {
-          var coordinatesId = coordinateImportService.handle(batchOperation, new BatchOperationUnitDto(
-            OperationType.CREATE, ResourceType.COORDINATES, null, body.getCoordinates()
+        // Monetization
+        // TO DO
+        if (body.getMonetization() != null) {
+          var monetizationId = monetizationImportService.handle(batchOperation, new BatchOperationUnitDto(
+            OperationType.CREATE, ResourceType.COORDINATES, null, body.getMonetization()
           )).getRight().getId();
-          body.setCoordinatesId(coordinatesId);
-        }
-
-
-        // Author
-        if (body.getAuthor() != null) {
-          var authorId = personImportService.handle(batchOperation, new BatchOperationUnitDto(
-            OperationType.CREATE, ResourceType.PEOPLE, null, body.getAuthor()
-          )).getRight().getId();
-          body.setAuthorId(authorId);
-        }
-
-        // Discipline
-        if (body.getDiscipline() != null) {
-          var disciplineId = disciplineImportService.handle(batchOperation, new BatchOperationUnitDto(
-            OperationType.CREATE, ResourceType.DISCIPLINES, null, body.getDiscipline()
-          )).getRight().getId();
-          body.setDisciplineId(disciplineId);
+          body.setCoordinatesId(monetizationId);
         }
 
         var updateDto = batchMapper.toUpdate(body);
