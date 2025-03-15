@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @OpenAPIDefinition(info = @Info(
-  title = "Lab 1 | Information Systems",
+  title = "Lab 1 | BLPS",
   description = "Spring API for Lab 1",
   version = "0.1.0")
 )

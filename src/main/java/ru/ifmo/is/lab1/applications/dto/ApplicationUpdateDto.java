@@ -3,7 +3,8 @@ package ru.ifmo.is.lab1.applications.dto;
 import lombok.Data;
 import jakarta.validation.constraints.*;
 import org.openapitools.jackson.nullable.JsonNullable;
-import ru.ifmo.is.lab1.adminrequests.Status;
+import ru.ifmo.is.lab1.applications.Status;
+
 
 @Data
 public class ApplicationUpdateDto {
