@@ -35,6 +35,9 @@ public class User implements UserDetails, BaseEntity {
   @Column(name="username", nullable=false, unique=true)
   private String username;
 
+  @Column(name="details", nullable = false, unique = true, length = 10)
+  private int details;
+
   @Enumerated(EnumType.STRING)
   @ColumnTransformer(write="?::user_role")
   @Column(name="role", nullable=false)
