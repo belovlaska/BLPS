@@ -2,6 +2,7 @@ package ru.ifmo.is.lab1.specialoperations;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.ifmo.is.lab1.applications.Application;
 import ru.ifmo.is.lab1.applications.mappers.LabWorkMapper;
 import ru.ifmo.is.lab1.applications.LabWorkRepository;
 import ru.ifmo.is.lab1.applications.LabWorkService;
@@ -22,18 +23,18 @@ public class SpecialOperationService {
 //  private final LabWorkService labWorkService;
 //  private final LabWorkMapper mapper;
 
-  private final MonetizationRepository repository;
-  private final MonetizationService monetizationService;
-  private final MonetizationMapper mapper;
+  private final ApplicationRepository repository;
+  private final ApplicationService applicationService;
+  private final ApplicationMapper mapper;
 
 //  public LabWorkDto addLabWorkToDiscipline(int id, LabWorkCreateDto dto) {
 //    dto.setDisciplineId(id);
 //    return labWorkService.create(dto);
 //  }
 
-  public MonetizationDto addMonetizationToApplication(float sum, MonetizationCreateDto dto) {
-    dto.setSum(sum);
-    return monetizationService.create(dto);
+  public ApplicationDto addMonetizationToApplication(int id, ApplicationCreateDto dto) {
+    dto.setMonetization(id);
+    return applicationService.create(dto);
   }
 
 }

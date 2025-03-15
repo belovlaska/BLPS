@@ -9,6 +9,7 @@ import org.hibernate.dialect.PostgreSQLEnumJdbcType;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import ru.ifmo.is.lab1.common.framework.CrudEntity;
 
+import ru.ifmo.is.lab1.monetization.Monetization;
 import ru.ifmo.is.lab1.users.User;
 
 @Entity

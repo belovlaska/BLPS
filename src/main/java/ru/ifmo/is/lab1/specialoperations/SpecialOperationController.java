@@ -89,8 +89,8 @@ public class SpecialOperationController {
 
   @PostMapping("/add-monetization-to-application/{sum}")
   @Operation(summary = "Добавить монетизацию приложению")
-  public ResponseEntity<MonetizationDto> addMonetizationToApplication(@PathVariable float sum, @Valid @RequestBody MonetizationCreateDto dto) {
-    var monetization = service.addMonetizationToApplication(sum, dto);
-    return ResponseEntity.ok(monetization);
+  public ResponseEntity<ApplicationDto> addMonetizationToApplication(@PathVariable int id, @Valid @RequestBody ApplicationCreateDto dto) {
+    var application = service.addMonetizationToApplication(id, dto);
+    return ResponseEntity.ok(application);
   }
 }
