@@ -7,7 +7,9 @@ import ru.ifmo.is.lab1.applications.dto.ApplicationUpdateDto;
 import ru.ifmo.is.lab1.applications.mappers.ApplicationMapper;
 import ru.ifmo.is.lab1.common.context.ApplicationLockBean;
 import ru.ifmo.is.lab1.common.errors.ResourceAlreadyExists;
+import ru.ifmo.is.lab1.common.errors.ResourceNotFoundException;
 import ru.ifmo.is.lab1.common.framework.CrudService;
+import ru.ifmo.is.lab1.common.policies.Policy;
 import ru.ifmo.is.lab1.common.search.SearchMapper;
 import ru.ifmo.is.lab1.events.EventService;
 import ru.ifmo.is.lab1.users.UserService;
@@ -25,16 +27,21 @@ public class ApplicationService
   > {
 
   private final ApplicationLockBean applicationLock;
+  private final Policy policy;
+  private final ApplicationMapper applicationMapper;
+
   public ApplicationService(
     ApplicationRepository repository,
     ApplicationMapper mapper,
     ApplicationPolicy policy,
     SearchMapper<Application> searchMapper,
     UserService userService,
-    EventService<Application> eventService, ApplicationLockBean applicationLock
-  ) {
+    EventService<Application> eventService, ApplicationLockBean applicationLock,
+    Policy policy, ApplicationMapper applicationMapper) {
     super(repository, mapper, policy, searchMapper, userService, eventService);
     this.applicationLock = applicationLock;
+    this.policy = policy;
+    this.applicationMapper = applicationMapper;
   }
 
   @Override
@@ -68,4 +75,9 @@ public class ApplicationService
   private String errorMessage(String name) {
     return "Application with name '" + name + "' already exists";
   }
+
+//  public ApplicationDto addMonetization(int id) {
+//    var application = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Not Found: " + id));
+//
+//  }
 }
