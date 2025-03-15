@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 import ru.ifmo.is.lab1.common.framework.CrudPolicy;
 
 @Component
-public class LabWorkPolicy extends CrudPolicy<Application> {
+public class ApplicationPolicy extends CrudPolicy<Application> {
 
   @Override
   public String getPolicySubject() {

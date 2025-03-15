@@ -5,25 +5,18 @@ import jakarta.validation.constraints.*;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 @Data
-public class LabWorkUpdateDto {
+public class ApplicationUpdateDto {
   @NotNull
   @NotBlank
   private JsonNullable<String> name;
 
   @NotNull
-  private JsonNullable<Integer> coordinatesId;
+  private JsonNullable<Integer> monetizationId;
 
   @NotBlank
   private JsonNullable<String> description;
 
-  private JsonNullable<Integer> authorId;
-
-  @NotNull
-  private JsonNullable<Cost> difficulty;
-
-  private JsonNullable<Integer> disciplineId;
-
   @Min(0)
-  private JsonNullable<Integer> minimalPoint;
+  private JsonNullable<Integer> cost;
 
 }

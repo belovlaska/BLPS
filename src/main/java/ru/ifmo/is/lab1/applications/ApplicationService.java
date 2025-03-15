@@ -1,34 +1,34 @@
 package ru.ifmo.is.lab1.applications;
 
 import org.springframework.stereotype.Service;
+import ru.ifmo.is.lab1.applications.dto.ApplicationCreateDto;
+import ru.ifmo.is.lab1.applications.dto.ApplicationDto;
+import ru.ifmo.is.lab1.applications.dto.ApplicationUpdateDto;
 import ru.ifmo.is.lab1.common.context.ApplicationLockBean;
 import ru.ifmo.is.lab1.common.errors.ResourceAlreadyExists;
 import ru.ifmo.is.lab1.common.framework.CrudService;
 import ru.ifmo.is.lab1.common.search.SearchMapper;
 import ru.ifmo.is.lab1.events.EventService;
-import ru.ifmo.is.lab1.applications.dto.LabWorkCreateDto;
-import ru.ifmo.is.lab1.applications.dto.LabWorkDto;
-import ru.ifmo.is.lab1.applications.dto.LabWorkUpdateDto;
 import ru.ifmo.is.lab1.applications.mappers.LabWorkMapper;
 import ru.ifmo.is.lab1.users.UserService;
 
 @Service
-public class LabWorkService
+public class ApplicationService
   extends CrudService<
   Application,
-  LabWorkRepository,
+  ApplicationRepository,
         LabWorkMapper,
-  LabWorkPolicy,
-  LabWorkDto,
-  LabWorkCreateDto,
-  LabWorkUpdateDto
+        ApplicationPolicy,
+  ApplicationDto,
+  ApplicationCreateDto,
+  ApplicationUpdateDto
   > {
 
   private final ApplicationLockBean applicationLock;
-  public LabWorkService(
-    LabWorkRepository repository,
+  public ApplicationService(
+    ApplicationRepository repository,
     LabWorkMapper mapper,
-    LabWorkPolicy policy,
+    ApplicationPolicy policy,
     SearchMapper<Application> searchMapper,
     UserService userService,
     EventService<Application> eventService, ApplicationLockBean applicationLock
@@ -50,14 +50,14 @@ public class LabWorkService
   }
 
   @Override
-  public void validateCreate(Application obj, LabWorkCreateDto dto) {
+  public void validateCreate(Application obj, ApplicationCreateDto dto) {
     if (this.repository.countByName(dto.getName()) != 0L) {
       throw new ResourceAlreadyExists(errorMessage(dto.getName()));
     }
   }
 
   @Override
-  public void validateUpdate(Application obj, LabWorkUpdateDto dto) {
+  public void validateUpdate(Application obj, ApplicationUpdateDto dto) {
     if (dto.getName().isPresent()) {
       if (this.repository.countByName(dto.getName().get()) != 0L) {
         throw new ResourceAlreadyExists(errorMessage(dto.getName().get()));
@@ -66,6 +66,6 @@ public class LabWorkService
   }
 
   private String errorMessage(String name) {
-    return "LabWork with name '" + name + "' already exists";
+    return "Application with name '" + name + "' already exists";
   }
 }

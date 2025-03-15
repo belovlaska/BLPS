@@ -10,7 +10,7 @@ import ru.ifmo.is.lab1.common.errors.PolicyViolationError;
 import ru.ifmo.is.lab1.common.errors.ResourceAlreadyExists;
 
 import ru.ifmo.is.lab1.disciplines.DisciplineImportService;
-import ru.ifmo.is.lab1.applications.LabWorkImportService;
+import ru.ifmo.is.lab1.applications.ApplicationImportService;
 import ru.ifmo.is.lab1.locations.LocationImportService;
 import ru.ifmo.is.lab1.people.PersonImportService;
 
@@ -24,7 +24,7 @@ public class BatchOperationImporterService {
 
   private final CoordinateImportService coordinateImportService;
   private final DisciplineImportService disciplineImportService;
-  private final LabWorkImportService labWorkImportService;
+  private final ApplicationImportService labWorkImportService;
   private final LocationImportService locationImportService;
   private final PersonImportService personImportService;
 

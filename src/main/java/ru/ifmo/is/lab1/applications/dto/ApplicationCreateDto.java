@@ -4,25 +4,19 @@ import jakarta.validation.constraints.*;
 import lombok.Data;
 
 @Data
-public class LabWorkCreateDto {
+public class ApplicationCreateDto {
   @NotNull
   @NotBlank
   private String name;
 
   @NotNull
-  private Integer coordinatesId;
+  private Integer monetizationId;
 
   @NotBlank
   private String description;
 
-  private Integer disciplineId;
-
-  private Integer authorId;
-
-  @NotNull
-  private Cost difficulty;
 
   @Min(0)
-  private Integer minimalPoint;
+  private Integer cost;
 
 }

@@ -4,19 +4,17 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import ru.ifmo.is.lab1.common.framework.dto.AuditableDto;
 import ru.ifmo.is.lab1.monetization.Monetization;
-import ru.ifmo.is.lab1.disciplines.Discipline;
-import ru.ifmo.is.lab1.people.Person;
+
+import ru.ifmo.is.lab1.users.User;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class LabWorkDto extends AuditableDto {
+public class ApplicationDto extends AuditableDto {
   private int id;
   private String name;
-  private Monetization coordinates;
-  private Discipline discipline;
-  private Person author;
+  private Monetization monetization;
+  private User author;
   private String description;
-  private Cost difficulty;
-  private Integer minimalPoint;
+  private Integer cost;
 
 }

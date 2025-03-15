@@ -12,14 +12,14 @@ import ru.ifmo.is.lab1.applications.dto.*;
 public class ApplicationController
   extends CrudController<
   Application,
-    LabWorkDto,
-    LabWorkCreateDto,
-    LabWorkUpdateDto,
-  LabWorkService
+  ApplicationDto,
+  ApplicationCreateDto,
+  ApplicationUpdateDto,
+  ApplicationService
   > {
 
   public ApplicationController(
-    LabWorkService service
+    ApplicationService service
   ) {
     super(service);
   }

@@ -12,13 +12,8 @@ public enum ResourceType {
   @JsonProperty("monetization")
   COORDINATES("monetization"),
   @JsonProperty("applications")
-  LABWORKS("applications"),
-  @JsonProperty("disciplines")
-  DISCIPLINES("disciplines"),
-  @JsonProperty("locations")
-  LOCATIONS("locations"),
-  @JsonProperty("people")
-  PEOPLE("people");
+  APPLICATIONS("applications");
+
 
   private static final Map<String, ResourceType> resources = new HashMap<>();
 

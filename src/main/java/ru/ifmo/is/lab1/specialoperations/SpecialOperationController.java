@@ -4,22 +4,13 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.ifmo.is.lab1.common.search.SearchCriteria;
-import ru.ifmo.is.lab1.common.search.SearchDto;
-import ru.ifmo.is.lab1.applications.LabWorkService;
-import ru.ifmo.is.lab1.applications.dto.LabWorkCreateDto;
-import ru.ifmo.is.lab1.applications.dto.LabWorkDto;
+import ru.ifmo.is.lab1.applications.ApplicationService;
 import ru.ifmo.is.lab1.monetization.MonetizationService;
 import ru.ifmo.is.lab1.monetization.dto.MonetizationCreateDto;
 import ru.ifmo.is.lab1.monetization.dto.MonetizationDto;
-
-import java.util.Collections;
 
 
 @RestController
@@ -29,7 +20,7 @@ import java.util.Collections;
 public class SpecialOperationController {
 
   private final SpecialOperationService service;
-  private final LabWorkService labWorkService;
+  private final ApplicationService labWorkService;
   private final MonetizationService monetizationService;
 
 //  @GetMapping("/filter-by-minimalPoint")
